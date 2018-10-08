@@ -8,4 +8,9 @@ return array(
 
     // Number of seconds to cache the results
     'cacheTime' => '43200',
+
+    // API Key for IPAPI.com - which replaced Nekudo on 2018/10/08
+    // https://github.com/nekudocom/shiny_geoip/blob/master/README.md#readme
+    // A free account can be created here: https://ipapi.com/product
+    'ipApiKey' => 'APIKEYHERE'
 );
