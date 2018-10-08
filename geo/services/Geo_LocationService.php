@@ -72,12 +72,20 @@ class Geo_LocationService extends BaseApplicationComponent
             return array();
         }
 
-        $data = json_decode($response->getBody());
-        if (property_exists($data, "type") && $data->type === "error") {
-            return array();
-        }
+        $json = json_decode($response->getBody());
+        if (property_exists($json, 'error') && $json->success === false) {
+            $errors = array(
+                'error' => array(
+                    'type' => $json->error->type,
+                    'info' => $json->error->info,
+                ),
+            );
 
+            if ($json->error->type == 'missing_access_key') {
+                $errors['error']['solution'] = 'Add your API key to craft/config/geo.php. If this file doesn\'t exist, copy config.php from craft/plugins/geo and save it as geo.php in the craft/config directory.';
+            }
 
+            return $errors;
         }
 
         $data = array(
