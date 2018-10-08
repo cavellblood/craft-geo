@@ -95,6 +95,7 @@ class Geo_LocationService extends BaseApplicationComponent
             'region_name' => $json->region_name,
             'zipcode' => $json->zip,
             'city' => $json->city,
+            'timezone' => isset($json->time_zone) ? $json->time_zone : '',
             'latitude' => $json->latitude,
             'longitude' => $json->longitude,
             'cached' => false
