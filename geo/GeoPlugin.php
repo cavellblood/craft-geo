@@ -10,7 +10,7 @@ class GeoPlugin extends BasePlugin
 
     public function getVersion()
     {
-        return '1.4';
+        return '1.5.0';
     }
 
     public function getDeveloper()
@@ -21,5 +21,9 @@ class GeoPlugin extends BasePlugin
     public function getDeveloperUrl()
     {
         return 'http://lukeholder.com';
+    }
+
+    public function init() {
+        require_once 'vendor/autoload.php';
     }
 }
