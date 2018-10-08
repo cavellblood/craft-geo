@@ -22,4 +22,8 @@ class GeoPlugin extends BasePlugin
     {
         return 'http://lukeholder.com';
     }
+
+    public function init() {
+        require_once 'vendor/autoload.php';
+    }
 }
