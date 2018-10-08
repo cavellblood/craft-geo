@@ -8,26 +8,26 @@ class Geo_LocationService extends BaseApplicationComponent
     public function getInfo($doCache)
     {
         $data = array(
-            "ip"=>"",
-            "country_code"=>"",
-            "country_name"=>"",
-            "region_code"=>"",
-            "region_name"=>"",
-            "city"=>"",
-            "zipcode"=>"",
-            "latitude"=>"",
-            "longitude"=>"",
-            "metro_code"=>"",
-            "areacode"=>"",
-            "timezone"=>"",
-            "cached"=>false
+            'ip' => '',
+            'country_code' => '',
+            'country_name' => '',
+            'region_code' => '',
+            'region_name' => '',
+            'city' => '',
+            'zipcode' => '',
+            'latitude' => '',
+            'longitude' => '',
+            'metro_code' => '',
+            'areacode' => '',
+            'timezone' => '',
+            'cached' => false
         );
 
         $devMode = craft()->config->get('devMode');
 
         $ip = craft()->request->getIpAddress();
 
-        $localIps = array("127.0.0.1","::1");
+        $localIps = array('127.0.0.1','::1');
 
         if(in_array($ip,$localIps) or $devMode)
         {
@@ -38,7 +38,7 @@ class Geo_LocationService extends BaseApplicationComponent
         $ipAnonymizer = new IpAnonymizer();
         $ip = $ipAnonymizer->anonymize($ip);
 
-        $cachedData = craft()->cache->get("craft.geo.".$ip);
+        $cachedData = craft()->cache->get('craft.geo.'.$ip);
 
         if ($cachedData){
             $cached = json_decode($cachedData,true);
@@ -54,7 +54,7 @@ class Geo_LocationService extends BaseApplicationComponent
 
         if($doCache){
             $seconds = craft()->config->get('cacheTime', 'geo');
-            craft()->cache->add("craft.geo.".$ip,json_encode($data),$seconds);
+            craft()->cache->add('craft.geo.'.$ip,json_encode($data),$seconds);
         }
 
         return $data;
@@ -80,15 +80,15 @@ class Geo_LocationService extends BaseApplicationComponent
         }
 
         $data = array(
-            "ip"=>$data->traits->ip_address,
-            "country_code"=>$data->country->iso_code,
-            "country_name"=>$data->country->names->en,
-            "region_name"=>$regionName,
-            // Yes i know, i am not getting postcode etc yet.
-            "city"=>$city,
-            "latitude"=>$data->location->latitude,
-            "longitude"=>$data->location->longitude,
-            "cached"=>false
+            'ip' => $json->ip,
+            'country_code' => $json->country_code,
+            'country_name' => $json->country_name,
+            'region_name' => $json->region_name,
+            'zipcode' => $json->zip,
+            'city' => $json->city,
+            'latitude' => $json->latitude,
+            'longitude' => $json->longitude,
+            'cached' => false
         );
 
         return $data;
