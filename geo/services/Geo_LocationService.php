@@ -35,7 +35,8 @@ class Geo_LocationService extends BaseApplicationComponent
         }
 
         // Anonymized IP
-        $ip = $this->anonymizeIp($ip);
+        $ipAnonymizer = new IpAnonymizer();
+        $ip = $ipAnonymizer->anonymize($ip);
 
         $cachedData = craft()->cache->get("craft.geo.".$ip);
 
