@@ -1,6 +1,6 @@
 # Changelog Craft CMS Geo Plugin
 
-## Version 1.5 ([@cavellblood](https://github.com/cavellblood))
+## Version 1.5.0 ([@cavellblood](https://github.com/cavellblood))
 ### Added
 * New configuration key `ipApiKey`.
 
