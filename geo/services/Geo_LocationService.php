@@ -50,11 +50,6 @@ class Geo_LocationService extends BaseApplicationComponent
 
         if (!empty($apiOne)){
             $data = array_merge($data, $apiOne);
-        // } else {
-        //     $apiTwo = $this->getTelizeData($ip);
-        //     if (!empty($apiTwo)){
-        //         $data = array_merge($data, $apiTwo);
-        //     }
         }
 
         if($doCache){
@@ -81,16 +76,7 @@ class Geo_LocationService extends BaseApplicationComponent
             return array();
         }
 
-        if(isset($data->subdivisions[0])){
-            $regionName = $data->subdivisions[0]->names->en;
-        }else{
-            $regionName = "";
-        }
 
-        if(isset($data->city)){
-            $city = $data->city->names->en;
-        }else{
-            $city = "";
         }
 
         $data = array(
@@ -108,27 +94,4 @@ class Geo_LocationService extends BaseApplicationComponent
         return $data;
     }
 
-    // private function getTelizeData($ip){
-
-    //     $url = "/geip/".$ip;
-    //     $telizeClient = new \Guzzle\Http\Client("http://www.telize.com");
-    //     $response = $telizeClient->get($url, array(), array("exceptions" => false))->send();
-
-    //     if (!$response->isSuccessful()) {
-    //         return array();
-    //     }
-
-    //     $data = json_decode($response->getBody(),true);
-
-    //     $data = array(
-    //         "ip"=>$data['ip'],
-    //         "country_code"=>$data['country_code'],
-    //         "country_name"=>$data['country'],
-    //         "latitude"=>$data['latitude'],
-    //         "longitude"=>$data['longitude'],
-    //         "cached"=>false
-    //     );
-
-    //     return $data;
-    // }
 }
