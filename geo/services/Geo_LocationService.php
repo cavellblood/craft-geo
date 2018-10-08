@@ -1,6 +1,8 @@
 <?php
 namespace Craft;
 
+use geertw\IpAnonymizer\IpAnonymizer;
+
 class Geo_LocationService extends BaseApplicationComponent
 {
     public function getInfo($doCache)
