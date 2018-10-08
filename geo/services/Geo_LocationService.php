@@ -63,9 +63,10 @@ class Geo_LocationService extends BaseApplicationComponent
 
     private function getIpApiData($ip){
 
-        $url = "/api/".$ip."/full";
-        $nekudoClient = new \Guzzle\Http\Client("http://geoip.nekudo.com");
-        $response = $nekudoClient->get($url, array(), array("exceptions" => false))->send();
+        $apiKey = craft()->config->get('ipApiKey', 'geo');
+        $url = $ip . '?access_key=' . $apiKey;
+        $ipApiClient = new \Guzzle\Http\Client('http://api.ipapi.com');
+        $response = $ipApiClient->get($url, array(), array('exceptions' => false))->send();
 
         if (!$response->isSuccessful()) {
             return array();
