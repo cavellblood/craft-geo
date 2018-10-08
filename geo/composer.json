@@ -1,0 +1,7 @@
+{
+    "name": "lukeholder/geo",
+    "description": "A simple plugin to get information about your users location.",
+    "require": {
+        "geertw/ip-anonymizer": "^1.1"
+    }
+}
