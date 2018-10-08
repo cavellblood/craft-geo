@@ -46,7 +46,7 @@ class Geo_LocationService extends BaseApplicationComponent
             return $cached;
         }
 
-        $apiOne = $this->getNekudoData($ip);
+        $apiOne = $this->getIpApiData($ip);
 
         if (!empty($apiOne)){
             $data = array_merge($data, $apiOne);
@@ -61,7 +61,7 @@ class Geo_LocationService extends BaseApplicationComponent
     }
 
 
-    private function getNekudoData($ip){
+    private function getIpApiData($ip){
 
         $url = "/api/".$ip."/full";
         $nekudoClient = new \Guzzle\Http\Client("http://geoip.nekudo.com");
