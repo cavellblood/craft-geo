@@ -2,13 +2,13 @@
 
 A simple plugin to get information about your users location.
 
-Put the geo folder in your craft plugins folder.
+Put the `geo` folder in your `craft/plugins` folder.
 
 ```twig
 {#
  # The following will cache the users location from their IP, so subsequent
  # api calls are not made, but just looked up in the cache:
- #}
+#}
 {% set data = craft.geo.info(true) %}
 
 {# which is the same as: #}
@@ -21,7 +21,7 @@ Put the geo folder in your craft plugins folder.
 {{ data.country_code }}
 ```
 
-Variables available in craft twig templates:
+Variables available in Craft twig templates:
 
 ```twig
 location: {{ craft.geo.info.country_name }}
@@ -42,11 +42,10 @@ cached: {{ craft.geo.info.cached }}
 You are limited to 10,000 requests an hour for this plugin. It caches a single IP
 address for 12 hours by default. You can config this with a config file as explained below.
 
-If you are in Crafts devMode or visiting the site from the server itself then a default IP adress will be used.
-This setting is configurable by creating a geo.php file in your craft/config folder. An example of this file is found in the geo-examples folder.
+If you are in Craft’s `devMode` or visiting the site from the server itself then a default IP address will be used.
+This setting is configurable by creating a `geo.php` file in your `craft/config` folder. An example of this file is found in the geo-examples folder.
 
 ## TODO
-
 * Add additional API endpoints for API redundancy.
 * Modularize enpoints so you can add your own endpoint plugins.
 
