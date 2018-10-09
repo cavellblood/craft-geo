@@ -1,0 +1,10 @@
+.plugin-footer {
+    margin: 24px 0 0 0;
+    width: 100%;
+}
+
+.plugin-footer .plugin-credit {
+    font-size: 11px;
+    color: #818a95;
+    text-align: right;
+}

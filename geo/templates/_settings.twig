@@ -1,0 +1,34 @@
+{% import "_includes/forms" as forms %}
+{% includeCssResource "geo/css/Geo.css" %}
+
+{% macro configWarning(setting) -%}
+	{{ "This is being overridden by the <code>{setting}</code> config setting in your <code>geo.php</code> config file."|t({
+		setting: setting
+	})|raw }}
+{%- endmacro %}
+
+{% from _self import configWarning %}
+
+{{ forms.textField({
+	first:        'true',
+	label:        'ipapi.com API Access Key'|t,
+	instructions: 'This key can be obtained by <a href="https://ipapi.com/product">signing up for a free ipapi.com account</a>.'|t,
+	id:           'ipApiKey',
+	name:         'ipApiKey',
+	class:        'code',
+	type:         'text',
+	value:        settings['ipApiKey'],
+	disabled:     (craft.config.get('ipApiKey', 'geo') is not sameas(null)),
+	warning:      (craft.config.get('ipApiKey', 'geo') is not sameas(null)) ? configWarning('ipApiKey'),
+	errors:       settings.getErrors('ipApiKey')
+}) }}
+
+<hr>
+
+<div class="plugin-footer">
+	<div class="footer-right">
+		<div class="plugin-credit">
+			<p>{{ craft.geo.getPluginName }} {{ craft.geo.getPluginVersion }} &bull; <a href="{{ craft.geo.getPluginUrl }}" target="_blank">GitHub</a></p>
+		</div>
+	</div>
+</div>
