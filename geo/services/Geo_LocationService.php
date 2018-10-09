@@ -84,7 +84,7 @@ class Geo_LocationService extends BaseApplicationComponent
             );
 
             if ($json->error->type == 'missing_access_key') {
-                $errors['error']['solution'] = 'Add your API key to craft/config/geo.php. If this file doesn\'t exist, copy config.php from craft/plugins/geo and save it as geo.php in the craft/config directory.';
+                $errors['error']['solution'] = 'Add your API Access Key to the plugin’s setting page.';
             }
 
             return $errors;
