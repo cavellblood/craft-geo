@@ -10,9 +10,37 @@
 {% from _self import configWarning %}
 
 {{ forms.textField({
-	first:        'true',
+	first:        true,
+	autofocus:    true,
+	label:        'Default IP Address'|t,
+	instructions: 'The IP address to be used when `devMode` is enabled or viewing the site from the server such as for local development.'|t,
+	id:           'defaultIp',
+	name:         'defaultIp',
+	class:        'code',
+	type:         'text',
+	value:        settings['defaultIp'],
+	disabled:     (craft.config.get('defaultIp', 'geo') is not sameas(null)),
+	warning:      (craft.config.get('defaultIp', 'geo') is not sameas(null)) ? configWarning('defaultIp'),
+	errors:       settings.getErrors('defaultIp')
+}) }}
+
+{{ forms.textField({
+	label:        'Cache Time'|t,
+	instructions: 'The number of seconds that a geo IP lookup should be cached.'|t,
+	id:           'cacheTime',
+	name:         'cacheTime',
+	class:        'code',
+	type:         'text',
+	value:        settings['cacheTime'],
+	disabled:     (craft.config.get('cacheTime', 'geo') is not sameas(null)),
+	warning:      (craft.config.get('cacheTime', 'geo') is not sameas(null)) ? configWarning('cacheTime'),
+	errors:       settings.getErrors('cacheTime')
+}) }}
+
+{{ forms.textField({
 	label:        'ipapi.com API Access Key'|t,
 	instructions: 'This key can be obtained by <a href="https://ipapi.com/product">signing up for a free ipapi.com account</a>.'|t,
+	required:     true,
 	id:           'ipApiKey',
 	name:         'ipApiKey',
 	class:        'code',

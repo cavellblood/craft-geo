@@ -1,5 +1,9 @@
 # Changelog Craft CMS Geo Plugin
 
+## Version 1.5.2 ([@cavellblood](https://github.com/cavellblood))
+### Added
+* `defaultIp` and `cacheTime` can now be set in the Craft control panel. If these keys are set in the `config/geo.php` it will override the control panel setting and add a warning.
+
 ## Version 1.5.1 ([@cavellblood](https://github.com/cavellblood))
 ### Added
 * `ipApiKey` can now be set in the Craft control panel. If it is set in the `config/geo.php` it will override the control panel setting and add a warning.
