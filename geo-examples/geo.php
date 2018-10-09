@@ -1,13 +1,16 @@
 <?php
 
-// Place this file in your craft/config folder, nest to general.php
-
 return array(
-  // This is the IP address used if in devMode or visiting your site
-  // from the local computer to the server.
-  //"defaultIp"=>"8.8.8.8",
+    // This is the IP address used if in devMode or visiting your site
+    // from the local computer to the server.
+    // i.e. 8.8.8.8 - Google
+    'defaultIp' => '8.8.8.8',
 
-  // This is the number of seconds to cache data about an IP address, default is 12
-  // hours if not set.
-  //"cacheTime"=>"43200"
+    // Number of seconds to cache the results
+    'cacheTime' => '43200',
+
+    // API Key for IPAPI.com - which replaced Nekudo on 2018/10/08
+    // https://github.com/nekudocom/shiny_geoip/blob/master/README.md#readme
+    // A free account can be created here: https://ipapi.com/product
+    'ipApiKey' => 'APIKEYHERE'
 );
