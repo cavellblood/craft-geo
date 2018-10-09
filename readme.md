@@ -2,7 +2,15 @@
 
 A simple plugin to get information about your users location.
 
-Put the `geo` folder in your `craft/plugins` folder.
+## Installation
+
+To install Geo, follow these steps:
+
+1.  Upload the `geo` folder to your `craft/plugins/` folder.
+2.  Go to Settings &rarr; Plugins from your Craft control panel and install the Geo plugin.
+3.  Click on “Geo” to go to the plugin’s settings page, and configure the plugin.
+
+## Usage
 
 ```twig
 {#
@@ -42,8 +50,40 @@ cached: {{ craft.geo.info.cached }}
 You are limited to 10,000 requests an hour for this plugin. It caches a single IP
 address for 12 hours by default. You can config this with a config file as explained below.
 
-If you are in Craft’s `devMode` or visiting the site from the server itself then a default IP address will be used.
-This setting is configurable by creating a `geo.php` file in your `craft/config` folder. An example of this file is found in the geo-examples folder.
+### Overriding plugin settings
+
+If you create a [config file](https://docs.craftcms.com/v2/config-settings.html) in your `craft/config` folder called `geo.php`, you can override
+the plugin’s settings in the control panel. Since that config file is fully [multi-environment](https://docs.craftcms.com/v2/multi-environment-configs.html) aware, this is
+a handy way to have different settings across multiple environments.
+
+Here’s what that config file might look like along with a list of all of the possible values you can override.
+
+```php
+<?php
+
+return array(
+    /**
+     * This is the IP address used if in devMode or visiting your site
+     * from the local computer to the server.
+     * i.e. 8.8.8.8 - Google
+     */
+    'defaultIp' => '8.8.8.8',
+
+    /**
+     * Number of seconds to cache the results
+     */
+    'cacheTime' => '43200',
+    
+    /**
+     * API Key for IPAPI.com - which replaced Nekudo on 2018/10/08
+     * https://github.com/nekudocom/shiny_geoip/blob/master/README.md#readme
+     * A free account can be created here: https://ipapi.com/product
+     */
+    'ipApiKey' => 'APIKEYHERE'
+);
+```
+
+If [`devMode` is enabled](https://docs.craftcms.com/v2/config-settings.html#devmode) or if visiting the site from the server itself (local development) then the `defaultIp` address will be used.
 
 ## TODO
 * Add additional API endpoints for API redundancy.
