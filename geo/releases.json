@@ -38,7 +38,7 @@
   {
     "version": "1.5.2",
     "downloadUrl": "https://github.com/lukeholder/craft-geo/archive/1.5.2.zip",
-    "date": "2018-10-08T11:00:00-21:35",
+    "date": "2018-10-08T11:00:00-22:52",
     "notes": [
       "[Added] `defaultIp` and `cacheTime` can now be set in the Craft control panel."
     ]
