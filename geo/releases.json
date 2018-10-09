@@ -42,5 +42,13 @@
     "notes": [
       "[Added] `defaultIp` and `cacheTime` can now be set in the Craft control panel."
     ]
+  },
+  {
+    "version": "1.5.3",
+    "downloadUrl": "https://github.com/lukeholder/craft-geo/archive/1.5.3.zip",
+    "date": "2018-10-08T11:00:00-23:25",
+    "notes": [
+      "[Fixed] Plugin wasn’t reading values from the control panel settings but only the config file. The config file can still be used but the plugin now respects any keys set in the control panel."
+    ]
   }
 ]

@@ -1,5 +1,10 @@
 # Changelog Craft CMS Geo Plugin
 
+## Version 1.5.3 ([@cavellblood](https://github.com/cavellblood))
+### Fixed
+* Plugin wasn’t reading values from the control panel settings but only the config file. The config file can still be used but the plugin now respects any keys set in the control panel.
+
+
 ## Version 1.5.2 ([@cavellblood](https://github.com/cavellblood))
 ### Added
 * `defaultIp` and `cacheTime` can now be set in the Craft control panel. If these keys are set in the `config/geo.php` it will override the control panel setting and add a warning.
