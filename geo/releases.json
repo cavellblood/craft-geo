@@ -18,13 +18,21 @@
   },
   {
     "version": "1.5.0",
-    "downloadUrl": "https://github.com/lukeholder/craft-geo/archive/1.5.zip",
+    "downloadUrl": "https://github.com/lukeholder/craft-geo/archive/1.5.0.zip",
     "date": "2018-10-08T11:00:00-18:00",
     "notes": [
       "[Added] New configuration key `ipApiKey`",
       "[Improved] Updated `Geo_LocationService` to use [ipapi.com](https://ipapi.com) for geo IP lookup. Requires a free account to use. The previous `geoip.nekudo.com` api service was discontinued and became the new `api.ipapi.com`. [See announcement](https://github.com/nekudocom/shiny_geoip/blob/master/README.md#readme).",
       "[Improved] Use IP Anonymizer from [`geertw/php-ip-anonymizer`](https://github.com/geertw/php-ip-anonymizer) via composer.",
       "[Fixed] `defaultIp` in `config.php` is now set to `8.8.8.8`."
+    ]
+  },
+  {
+    "version": "1.5.1",
+    "downloadUrl": "https://github.com/lukeholder/craft-geo/archive/1.5.1.zip",
+    "date": "2018-10-08T11:00:00-20:35",
+    "notes": [
+      "[Added] `ipApiKey` can now be set in the Craft control panel. If it is set in the `config/geo.php` it will override the control panel setting and add a warning."
     ]
   }
 ]
