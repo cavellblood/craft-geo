@@ -91,6 +91,8 @@ class GeoPlugin extends BasePlugin
     protected function defineSettings()
     {
         return array(
+            'defaultIp' => array(AttributeType::String, 'label' => 'Default IP', 'default' => '8.8.8.8'),
+            'cacheTime' => array(AttributeType::String, 'label' => 'Cache Time', 'default' => '43200'),
             'ipApiKey' => array(AttributeType::String, 'label' => 'ipapi.com API Access Key', 'required' => true, 'default' => ''),
         );
     }
