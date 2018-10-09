@@ -23,6 +23,8 @@ class Geo_LocationService extends BaseApplicationComponent
             'cached' => false
         );
 
+        $settings = craft()->plugins->getPlugin('geo')->getSettings();
+
         $devMode = craft()->config->get('devMode');
 
         $ip = craft()->request->getIpAddress();
@@ -31,7 +33,7 @@ class Geo_LocationService extends BaseApplicationComponent
 
         if(in_array($ip,$localIps) or $devMode)
         {
-            $ip = craft()->config->get('defaultIp', 'geo');
+            $ip = $settings->defaultIp;
         }
 
         // Anonymized IP
@@ -53,7 +55,7 @@ class Geo_LocationService extends BaseApplicationComponent
         }
 
         if($doCache){
-            $seconds = craft()->config->get('cacheTime', 'geo');
+            $seconds = $settings->cacheTime;
             craft()->cache->add('craft.geo.'.$ip,json_encode($data),$seconds);
         }
 
@@ -63,7 +65,7 @@ class Geo_LocationService extends BaseApplicationComponent
 
     private function getIpApiData($ip){
 
-        $apiKey = craft()->config->get('ipApiKey', 'geo');
+        $apiKey = craft()->plugins->getPlugin('geo')->getSettings()->ipApiKey;
         $url = $ip . '?access_key=' . $apiKey;
         $ipApiClient = new \Guzzle\Http\Client('http://api.ipapi.com');
         $response = $ipApiClient->get($url, array(), array('exceptions' => false))->send();
